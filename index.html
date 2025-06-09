@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>3D Solar System</title>
+</head>
+
+<body>
+  <div id="loading-screen">
+    <div class="loading-content">
+      <h1>Loading Solar System...</h1>
+      <div class="loading-bar"></div>
+    </div>
+  </div>
+
+  <div id="info-panel">
+    <h2>Solar System Explorer</h2>
+    <div id="planet-info">
+      <h3 id="selected-planet">Select a planet</h3>
+      <p id="planet-description">Click on any planet to learn more about it.</p>
+    </div>
+  </div>
+
+  <div id="speed-panel">
+    <h3>Orbital Speed Control</h3>
+    <div class="speed-control">
+      <div class="speed-row"><span class="planet-label">Mercury</span><input type="range" min="0.1" max="5" step="0.1" value="2" id="speed-mercury"><span id="val-mercury">2</span></div>
+      <div class="speed-row"><span class="planet-label">Venus</span><input type="range" min="0.1" max="5" step="0.1" value="1.5" id="speed-venus"><span id="val-venus">1.5</span></div>
+      <div class="speed-row"><span class="planet-label">Earth</span><input type="range" min="0.1" max="5" step="0.1" value="1" id="speed-earth"><span id="val-earth">1</span></div>
+      <div class="speed-row"><span class="planet-label">Mars</span><input type="range" min="0.1" max="5" step="0.1" value="0.8" id="speed-mars"><span id="val-mars">0.8</span></div>
+      <div class="speed-row"><span class="planet-label">Jupiter</span><input type="range" min="0.1" max="5" step="0.1" value="0.7" id="speed-jupiter"><span id="val-jupiter">0.7</span></div>
+      <div class="speed-row"><span class="planet-label">Saturn</span><input type="range" min="0.1" max="5" step="0.1" value="0.6" id="speed-saturn"><span id="val-saturn">0.6</span></div>
+      <div class="speed-row"><span class="planet-label">Uranus</span><input type="range" min="0.1" max="5" step="0.1" value="0.5" id="speed-uranus"><span id="val-uranus">0.5</span></div>
+      <div class="speed-row"><span class="planet-label">Neptune</span><input type="range" min="0.1" max="5" step="0.1" value="0.4" id="speed-neptune"><span id="val-neptune">0.4</span></div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="btn-zoom">
+      <button class="btn" id="zoom-in">+</button>
+      <button class="btn" id="zoom-out">-</button>
+    </div>
+    <div class="btn-wrapper">
+      <button class="btn" id="pause">⏸</button>
+      <button class="btn" id="theme-toggle">Dark/Light</button>
+      <button class="btn" id="reset">↺</button>
+    </div>
+  </div>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+
+</html>
