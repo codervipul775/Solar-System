@@ -1,3 +1,4 @@
+// importing necessary libraries and modules
 import * as THREE from "https://cdn.skypack.dev/three@0.129.0";
 import { OrbitControls } from "https://cdn.skypack.dev/three@0.129.0/examples/jsm/controls/OrbitControls.js";
 
@@ -68,6 +69,7 @@ const planetInfo = {
     }
 };
 
+// Setting distances from the Sun for each planet's orbit
 let mercury_orbit_radius = 50
 let venus_orbit_radius = 60
 let earth_orbit_radius = 70
@@ -77,7 +79,7 @@ let saturn_orbit_radius = 120
 let uranus_orbit_radius = 140
 let neptune_orbit_radius = 160
 
-// Replace individual revolution speed variables with an object
+// Setting up the default speeds for each planet's revolution around the Sun
 const revolutionSpeeds = {
     mercury: 2,
     venus: 1.5,
@@ -97,6 +99,7 @@ function createLoadingManager() {
     return loadingManager;
 }
 
+// Making the Space as a cube with images on each side with the help of THREE.js
 function createMaterialArray() {
     const skyboxImagepaths = ['../img/skybox/space_ft.png', '../img/skybox/space_bk.png', '../img/skybox/space_up.png', '../img/skybox/space_dn.png', '../img/skybox/space_rt.png', '../img/skybox/space_lf.png'];
     const materialArray = skyboxImagepaths.map((image) => {
@@ -106,6 +109,7 @@ function createMaterialArray() {
     return materialArray;
 }
 
+// Function to set the skybox using the created material array
 function setSkyBox() {
     const materialArray = createMaterialArray();
     let skyboxGeo = new THREE.BoxGeometry(1000, 1000, 1000);
@@ -113,6 +117,7 @@ function setSkyBox() {
     scene.add(skybox);
 }
 
+// Function to load planet textures and create meshes
 function loadPlanetTexture(texture, radius, widthSegments, heightSegments, meshType) {
     const geometry = new THREE.SphereGeometry(radius, widthSegments, heightSegments);
     const loader = new THREE.TextureLoader(loadingManager);
@@ -122,6 +127,7 @@ function loadPlanetTexture(texture, radius, widthSegments, heightSegments, meshT
     return planet;
 }
 
+// Function to create a ring for each planet's orbit
 function createRing(innerRadius) {
     let outerRadius = innerRadius - 0.1;
     let thetaSegments = 100;
@@ -138,6 +144,7 @@ function createRing(innerRadius) {
     return mesh;
 }
 
+// Function to set up speed controls for each planet
 function setupSpeedControls() {
     const speedMap = [
         { id: 'mercury' },
@@ -161,6 +168,7 @@ function setupSpeedControls() {
     });
 }
 
+// Function to initialize the scene, camera, renderer, and controls
 function init() {
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(
@@ -231,7 +239,7 @@ function init() {
     // Setup controls
     controls = new OrbitControls(camera, renderer.domElement);
     controls.minDistance = 12;
-    controls.maxDistance = 1000;
+    controls.maxDistance = 300;
 
     // Setup raycaster for planet selection
     raycaster = new THREE.Raycaster();
@@ -261,6 +269,7 @@ function init() {
     setupSpeedControls();
 }
 
+// Function to handle mouse click events for planet selection
 function onMouseClick(event) {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -287,6 +296,7 @@ function onMouseClick(event) {
     }
 }
 
+// Function to update the planet information displayed in the info panel
 function updatePlanetInfo(planetName) {
     const info = planetInfo[planetName];
     document.getElementById('selected-planet').textContent = info.name;
@@ -297,6 +307,7 @@ function updatePlanetInfo(planetName) {
     `;
 }
 
+// Function to revolve planets around the Sun based on simulation time
 function planetRevolver(time, speed, planet, orbitRadius, planetName) {
     if (!isPaused) {
         let orbitSpeedMultiplier = 0.001;
@@ -306,6 +317,7 @@ function planetRevolver(time, speed, planet, orbitRadius, planetName) {
     }
 }
 
+// Animation loop
 function animate(now) {
     requestAnimationFrame(animate);
     if (lastFrameTime === null) lastFrameTime = now;
@@ -315,8 +327,8 @@ function animate(now) {
     }
     lastFrameTime = now;
 
-    // Rotate the planets (keep spinning even if paused, or move inside !isPaused if you want them to stop)
-    const rotationSpeed = 0.005;
+    // Rotate the planets 
+    const rotationSpeed = 0.008;
     planet_earth.rotation.y += rotationSpeed;
     planet_sun.rotation.y += rotationSpeed;
     planet_mercury.rotation.y += rotationSpeed;
@@ -341,6 +353,7 @@ function animate(now) {
     renderer.render(scene, camera);
 }
 
+// Function to handle window resize events
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
