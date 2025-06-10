@@ -59,7 +59,6 @@ body.light-theme #loading-screen {
 }
 
 #c {
-  /* background: url("./img/space_stars_bg.jpg") no-repeat center center; */
   background: black;
   background-size: cover;
 }
