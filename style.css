@@ -196,6 +196,21 @@ body.light-theme #loading-screen {
   opacity: 1;
 }
 
+/* 3D scene planet labels */
+.planet-label-3d {
+  position: absolute;
+  color: white;
+  font-size: 14px;
+  pointer-events: none;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.planet-label-3d.visible {
+  opacity: 1;
+}
+
 #speed-panel {
   position: fixed;
   top: 40px;
@@ -236,12 +251,16 @@ body.light-theme #loading-screen {
   width: 100%;
 }
 
-.planet-label {
+.speed-row .planet-label {
   min-width: 90px;
   text-align: left;
   font-weight: 500;
   font-size: 1em;
   flex-shrink: 0;
+  color: inherit;
+  opacity: 1;
+  position: static;
+  text-shadow: none;
 }
 
 .speed-row input[type="range"] {

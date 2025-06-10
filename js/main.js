@@ -362,5 +362,14 @@ function onWindowResize() {
 
 window.addEventListener("resize", onWindowResize, false);
 
+// Function to create a label for each planet
+function createPlanetLabel(planet, name) {
+    const label = document.createElement('div');
+    label.className = 'planet-label-3d';
+    label.textContent = name;
+    document.body.appendChild(label);
+    return label;
+}
+
 init();
 animate(0);
