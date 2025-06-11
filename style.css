@@ -282,3 +282,66 @@ body.light-theme #speed-panel {
   background: rgba(255,255,255,0.92);
   color: #222;
 }
+
+@media (max-width: 900px) {
+  #speed-panel {
+    right: 10px;
+    top: 10px;
+    min-width: 220px;
+    max-width: 95vw;
+    padding: 12px 8px;
+    font-size: 0.95em;
+  }
+  .speed-row input[type="range"] {
+    width: 120px;
+  }
+}
+
+@media (max-width: 600px) {
+  #speed-panel {
+    right: 0;
+    left: 0;
+    top: 0;
+    margin: 0 auto;
+    min-width: unset;
+    max-width: 100vw;
+    border-radius: 0 0 12px 12px;
+    padding: 8px 2vw;
+    font-size: 0.9em;
+    z-index: 200;
+  }
+  .speed-row input[type="range"] {
+    width: 80px;
+  }
+  .speed-row .planet-label, .speed-row span {
+    font-size: 0.95em;
+    min-width: 60px;
+  }
+}
+
+#speed-toggle {
+  display: none;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 201;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 1.1em;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  #speed-toggle {
+    display: block;
+  }
+  #speed-panel {
+    display: none;
+  }
+  #speed-panel.open {
+    display: block;
+  }
+}

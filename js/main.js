@@ -265,6 +265,14 @@ function init() {
         document.body.classList.toggle('light-theme');
     });
 
+    const speedToggle = document.getElementById('speed-toggle');
+    const speedPanel = document.getElementById('speed-panel');
+    if (speedToggle && speedPanel) {
+        speedToggle.addEventListener('click', () => {
+            speedPanel.classList.toggle('open');
+        });
+    }
+
     camera.position.z = 100;
     setupSpeedControls();
 }
